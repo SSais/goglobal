@@ -25,17 +25,17 @@ export default function Auth() {
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
+      <View style={styles.spacer} /> {/* Spacer to push content to the bottom */}
       <ScrollView contentContainerStyle={styles.formContainer}>
         <View style={styles.inputWrapper}>
           <Input
-            label="Email"
+            label="Email Address"
             leftIcon={{ type: 'font-awesome', name: 'envelope' }}
             onChangeText={(text) => setEmail(text)}
             value={email}
             placeholder="Go@Global.com"
             autoCapitalize={'none'}
             containerStyle={styles.input}
-            inputContainerStyle={styles.inputField}
           />
         </View>
 
@@ -49,7 +49,6 @@ export default function Auth() {
             placeholder="Password"
             autoCapitalize={'none'}
             containerStyle={styles.input}
-            inputContainerStyle={styles.inputField}
           />
         </View>
 
@@ -73,10 +72,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     width: '100%',
     padding: 20,
+    justifyContent: 'flex-end', // Aligns content at the bottom of the page
+  },
+  spacer: {
+    flex: 1,
   },
   formContainer: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
+    width: '100%',
   },
   inputWrapper: {
     marginBottom: 20,
@@ -84,23 +88,33 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-  },
-  inputField: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    borderColor: '#ddd',
-    borderWidth: 1,
+    borderBottomColor: '#ddd', // Color of the line
     paddingHorizontal: 10,
     paddingVertical: 12,
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#4A90E2', // Updated button color
     borderRadius: 8,
     paddingVertical: 12,
     width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
+    color: 'white', // Adding white color for text visibility
+    textAlign: 'center', // Centers the text
   },
 })
+
