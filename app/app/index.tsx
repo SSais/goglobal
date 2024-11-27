@@ -22,11 +22,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* {session && session.user && <Text>{session.user.id}</Text>} */}
+      {session && session.user && <Text>{session.user.id}</Text>}
       <Welcome />
-      <View>
-        <Text>Don't have an account?</Text>
-        <Link href="/signup/signup">Sign up</Link>
+      <View style={styles.signUp}>
+        <Text>
+          Don't have an account?{' '}
+          <Text style={styles.boldText}>
+            <Link href="/signup/signup">Sign up</Link>
+          </Text>
+        </Text>
       </View>
     </View>
   );
@@ -38,4 +42,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  signUp: {
+    padding: 20,
+  },
+  boldText: {
+    fontWeight: 'bold',
+  }
 });

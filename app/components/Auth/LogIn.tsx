@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     width: '100%',
     padding: 20,
-    justifyContent: 'flex-end', // Aligns content at the bottom of the page
+    justifyContent: 'flex-end',
   },
   spacer: {
     flex: 1,
@@ -90,14 +90,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomColor: '#ddd', // Color of the line
     paddingHorizontal: 10,
-    paddingVertical: 12,
-    borderRadius: 8,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
   },
   button: {
     backgroundColor: '#4A90E2', // Updated button color
@@ -113,8 +106,8 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: 'white', // Adding white color for text visibility
-    textAlign: 'center', // Centers the text
+    color: 'white',
+    textAlign: 'center',
   },
 })
 

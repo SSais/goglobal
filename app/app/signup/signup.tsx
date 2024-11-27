@@ -190,6 +190,11 @@ export default function SignUp() {
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#f9f9f9',
+  },  
   container: {
     flex: 1,
     backgroundColor: '#f9f9f9',

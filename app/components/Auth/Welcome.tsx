@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'; 
-import { Image } from 'expo-image';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import LogIn from './LogIn';
 
@@ -15,6 +15,7 @@ export default function Welcome() {
         style={styles.gradientBackground}
       >
         <View style={styles.container}>
+        <Ionicons name="earth-outline" size={70} color="black" />
           <Text style={styles.title}>Welcome to GoGlobal</Text>
           <Text style={styles.subtitle}>Navigate Borders, Simplify Life.</Text>
         </View>
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
   },
   container: {
-    paddingTop: 170,
+    paddingTop: 150,
     alignItems: 'center',
     width: '100%',
     paddingBottom: 150,
@@ -47,15 +48,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
+    marginTop: 20,
     fontWeight: 'bold',
     color: '#333333', // Updated text color
-    marginBottom: 10,
     textShadowColor: 'rgba(0, 0, 0, 0.2)',
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 4,
   },
   subtitle: {
     fontSize: 20,
+    marginTop: 20,
     color: '#666666', // Updated text color
     marginBottom: 30,
     textShadowColor: 'rgba(0, 0, 0, 0.1)',
