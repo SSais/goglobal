@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useState } from 'react';
 
-import Auth from './Auth';
+import Auth from './SignUp';
+import LogIn from './LogIn';
 
 export default function Welcome() {
 
@@ -33,18 +34,18 @@ export default function Welcome() {
         <Text onPress={handleNewUser}>I'm new</Text>
       </View>
       {newUser && <Auth/>}
+      {existingUser && <LogIn/>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: (
-      {
-          paddingTop: 50,
-          alignItems: 'center',
-          flex: 1,
-      }
-  ),
+  container: {
+    paddingTop: 50,
+    alignItems: 'center',
+    flex: 1,
+    width: '100%', // Added to take up full width
+  },
   title: (
       {
           fontSize: 32,

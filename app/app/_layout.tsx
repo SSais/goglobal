@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 
-import Auth from "../components/Auth/Auth";
+import Auth from "../components/Auth/SignUp";
 
 export default function RootLayout() {
   return (

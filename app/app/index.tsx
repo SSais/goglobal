@@ -1,7 +1,7 @@
 import 'react-native-url-polyfill/auto';
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import Auth from '../components/Auth/Auth';
+import Auth from '../components/Auth/SignUp';
 import { View, Text, StyleSheet } from 'react-native';
 import { Session } from '@supabase/supabase-js';
 
@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* {session && session.user && <Text>{session.user.id}</Text>} */}
+      {session && session.user && <Text>{session.user.id}</Text>}
       <Welcome />
     </View>
   );
