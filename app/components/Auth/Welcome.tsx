@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useState } from 'react';
+import { Link } from 'expo-router';
 
 import Auth from './SignUp';
 import LogIn from './LogIn';
@@ -34,7 +35,7 @@ export default function Welcome() {
         <Text style={styles.link} onPress={handleNewUser}>I'm new</Text>
       </View>
       {newUser && <Auth/>}
-      {existingUser && <LogIn/>}
+      {existingUser && <LogIn/>}      
     </View>
   );
 }
