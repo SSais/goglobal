@@ -6,6 +6,7 @@ import { Button, Input } from '@rneui/themed'
 export default function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
   const [loading, setLoading] = useState(false)
 
   async function signUpWithEmail() {
@@ -35,13 +36,12 @@ export default function SignUp() {
             leftIcon={{ type: 'font-awesome', name: 'envelope' }}
             onChangeText={(text) => setEmail(text)}
             value={email}
-            placeholder="email@address.com"
+            placeholder="Go@Global.com"
             autoCapitalize={'none'}
             containerStyle={styles.input}
             inputContainerStyle={styles.inputField}
           />
         </View>
-
         <View style={styles.inputWrapper}>
           <Input
             label="Password"
@@ -73,8 +73,9 @@ export default function SignUp() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
-    width: '100%', // Added to take up full width
+    backgroundColor: '#f9f9f9',
+    width: '100%',
+    padding: 20,
   },
   formContainer: {
     justifyContent: 'center',
@@ -90,13 +91,13 @@ const styles = StyleSheet.create({
   inputField: {
     backgroundColor: 'white',
     borderRadius: 8,
-    borderColor: '#ccc',
+    borderColor: '#ddd',
     borderWidth: 1,
-    paddingHorizontal: 0, // Adjusted padding to ensure text fully appears
+    paddingHorizontal: 10,
     paddingVertical: 12,
   },
   button: {
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#007BFF',
     borderRadius: 8,
     paddingVertical: 12,
     width: '100%',

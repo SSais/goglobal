@@ -29,9 +29,9 @@ export default function Welcome() {
       <Text style={styles.title}>Welcome to GoGlobal</Text>
       <Text style={styles.subtitle}>Navigate Borders, Simplify Life.</Text>
       <View style={styles.userSelect}>
-        <Text onPress={handleExistingUser}>I already have an account</Text>
-        <Text>/</Text>
-        <Text onPress={handleNewUser}>I'm new</Text>
+        <Text style={styles.link} onPress={handleExistingUser}>I already have an account</Text>
+        <Text style={styles.separator}>/</Text>
+        <Text style={styles.link} onPress={handleNewUser}>I'm new</Text>
       </View>
       {newUser && <Auth/>}
       {existingUser && <LogIn/>}
@@ -44,30 +44,34 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     alignItems: 'center',
     flex: 1,
-    width: '100%', // Added to take up full width
+    width: '100%',
+    backgroundColor: '#f9f9f9',
   },
-  title: (
-      {
-          fontSize: 32,
-          fontWeight: 'bold'
-      }
-  ),
-  subtitle: (
-      {
-          padding : 20,
-          fontSize: 18,
-          color: 'gray'
-      }
-  ),
-  userSelect: (
-      {
-          display: 'flex',
-          flexDirection: 'row',
-          gap: 20,
-          padding : 40,
-          fontSize: 0,
-          color: 'gray'
-      }
-  )
-})
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 18,
+    color: '#666',
+    marginBottom: 30,
+  },
+  userSelect: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  link: {
+    fontSize: 16,
+    color: '#007BFF',
+    textDecorationLine: 'underline',
+    marginHorizontal: 10,
+  },
+  separator: {
+    fontSize: 16,
+    color: '#666',
+  },
+});
 

@@ -20,26 +20,6 @@ export default function Auth() {
     setLoading(false)
   }
 
-  // async function signUpWithEmail() {
-  //   setLoading(true)
-  //   const {
-  //     data: { session },
-  //     error,
-  //   } = await supabase.auth.signUp({
-  //     email: email,
-  //     password: password,
-  //   })
-
-  //   if (error) Alert.alert(error.message)
-  //   if (!session) Alert.alert('Please check your inbox for email verification!')
-  //   setLoading(false)
-  // }
-
-
-  // <View style={styles.verticallySpaced}>
-  //       <Button title="Sign up" disabled={loading} onPress={() => signUpWithEmail()} />
-  //     </View>
-
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -52,7 +32,7 @@ export default function Auth() {
             leftIcon={{ type: 'font-awesome', name: 'envelope' }}
             onChangeText={(text) => setEmail(text)}
             value={email}
-            placeholder="email@address.com"
+            placeholder="Go@Global.com"
             autoCapitalize={'none'}
             containerStyle={styles.input}
             inputContainerStyle={styles.inputField}
@@ -90,8 +70,9 @@ export default function Auth() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
-    width: '100%', // Added to take up full width
+    backgroundColor: '#f9f9f9',
+    width: '100%',
+    padding: 20,
   },
   formContainer: {
     justifyContent: 'center',
@@ -107,13 +88,13 @@ const styles = StyleSheet.create({
   inputField: {
     backgroundColor: 'white',
     borderRadius: 8,
-    borderColor: '#ccc',
+    borderColor: '#ddd',
     borderWidth: 1,
-    paddingHorizontal: 0, // Adjusted padding to ensure text fully appears
+    paddingHorizontal: 10,
     paddingVertical: 12,
   },
   button: {
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#007BFF',
     borderRadius: 8,
     paddingVertical: 12,
     width: '100%',
