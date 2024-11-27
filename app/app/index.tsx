@@ -1,9 +1,9 @@
 import 'react-native-url-polyfill/auto';
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import Auth from '../components/Auth/Auth';
 import { View, Text, StyleSheet } from 'react-native';
 import { Session } from '@supabase/supabase-js';
+import { Link } from 'expo-router';
 
 import Welcome from '@/components/Auth/Welcome';
 
@@ -22,8 +22,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* {session && session.user && <Text>{session.user.id}</Text>} */}
+      {session && session.user && <Text>{session.user.id}</Text>}
       <Welcome />
+      <View style={styles.signUp}>
+        <Text>
+          Don't have an account?{' '}
+          <Text style={styles.boldText}>
+            <Link href="/signup/signup">Sign up</Link>
+          </Text>
+        </Text>
+      </View>
     </View>
   );
 }
@@ -34,4 +42,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  signUp: {
+    padding: 20,
+  },
+  boldText: {
+    fontWeight: 'bold',
+  }
 });
