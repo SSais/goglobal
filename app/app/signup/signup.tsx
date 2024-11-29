@@ -65,11 +65,24 @@ export default function SignUp() {
       email: email,
       password: password,
     })
+    updateDatabase()
 
     if (error) Alert.alert(error.message)
     if (!session) Alert.alert('Please check your inbox for email verification!')
     setLoading(false)
   }
+
+  async function updateDatabase() {
+    //upload correct details to the database
+    const { error } = await supabase.from('users_info').insert([
+    { first_name: firstName, last_name: lastName, phone: phone, dob: dob},
+    ])
+     .select()
+
+     if (error) {
+       console.log('error', error)
+     }
+    }
 
   return (
     <KeyboardAvoidingView
