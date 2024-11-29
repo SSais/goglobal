@@ -52,38 +52,60 @@ export default function SignUp() {
   // Check if date of birth is valid
   const handleDobChange = (text: string) => {
     setDob(text)
-    // You could add further validation here if needed (e.g., check if it's a valid date)
   }
 
   // Sign up function
   async function signUpWithEmail() {
-    setLoading(true)
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    })
-    updateDatabase()
-
-    if (error) Alert.alert(error.message)
-    if (!session) Alert.alert('Please check your inbox for email verification!')
-    setLoading(false)
-  }
-
-  async function updateDatabase() {
-    //upload correct details to the database
-    const { error } = await supabase.from('users_info').insert([
-    { first_name: firstName, last_name: lastName, phone: phone, dob: dob},
-    ])
-     .select()
-
-     if (error) {
-       console.log('error', error)
-     }
+    setLoading(true);
+  
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          data: {
+            first_name: firstName,
+            last_name: lastName,
+            phone: phone,
+            dob: dob,
+          },
+        },
+      });
+  
+      if (error) {
+        Alert.alert('Sign-up Error', error.message);
+        return;
+      }
+  
+      const { user } = data;
+      if (user) {
+        // Insert user profile data into the 'profiles' table
+        const { error: insertError } = await supabase
+          .from('profiles')
+          .upsert({
+            id: user.id,
+            first_name: firstName,
+            last_name: lastName,
+            phone: phone,
+            dob: dob,
+          })
+          .single();
+  
+        if (insertError) {
+          Alert.alert('Profile Creation Error', insertError.message);
+        } else {
+          console.log('Profile created for user:', user);
+        }
+      }
+  
+      Alert.alert('Success');
+    } catch (err) {
+      Alert.alert('An unexpected error occurred');
+    } finally {
+      setLoading(false);
     }
-
+  }
+  
   return (
     <KeyboardAvoidingView
       style={styles.container}

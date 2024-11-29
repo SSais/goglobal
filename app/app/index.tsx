@@ -6,6 +6,7 @@ import { Session } from '@supabase/supabase-js';
 import { Link } from 'expo-router';
 
 import Welcome from '@/components/Auth/Welcome';
+import { Button } from '@rneui/themed';
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -21,9 +22,13 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    session ? <View style={styles.container}>
       {session && session.user && <Text>{session.user.id}</Text>}
-      <Welcome />
+      <Button title="Sign out" onPress={() => supabase.auth.signOut()} />
+    </View>
+    :
+    <View style={styles.container}>
+    <Welcome />
       <View style={styles.signUp}>
         <Text>
           Don't have an account?{' '}
@@ -32,8 +37,8 @@ export default function App() {
           </Text>
         </Text>
       </View>
-    </View>
-  );
+      </View>
+  ); 
 }
 
 const styles = StyleSheet.create({

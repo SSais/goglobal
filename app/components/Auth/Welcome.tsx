@@ -9,7 +9,7 @@ export default function Welcome() {
   return (
     <View style={styles.mainContainer}>
       <LinearGradient
-        colors={['#4A90E2', '#F5F5F5']} // Updated gradient colors
+        colors={['#4A90E2', '#F5F5F5']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.gradientBackground}
