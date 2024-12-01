@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { Alert, StyleSheet, View, KeyboardAvoidingView, ScrollView, Platform } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import { Button, Input } from '@rneui/themed'
+import { useRouter } from 'expo-router';
 
 export default function SignUp() {
+  const router = useRouter();
+  //State to store user details and check validity
   const [email, setEmail] = useState<string>('')
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true)
 
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState<string>('')
   const [isValidPassword, setIsValidPassword] = useState<boolean>(true)
   const [confirmPassword, setConfirmPassword] = useState<string>('')
 
@@ -30,7 +33,7 @@ export default function SignUp() {
   }
 
   // Check if password is valid
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+  const passwordRegex = /^(?=.*\d).{8,}$/
 
   const handlePasswordChange = (text: string): void => {
     setPassword(text)
@@ -54,10 +57,15 @@ export default function SignUp() {
     setDob(text)
   }
 
+  // Validate all fields and sign up
+  async function handleValidatSignUp() {
+    isValidEmail && isValidPassword && isValidPhone && confirmPassword && firstName && lastName && dob ? signUpWithEmail() :
+    Alert.alert('Please fill in all fields correctly');
+  }
+
   // Sign up function
   async function signUpWithEmail() {
     setLoading(true);
-  
     try {
       const { data, error } = await supabase.auth.signUp({
         email: email,
@@ -97,12 +105,13 @@ export default function SignUp() {
           console.log('Profile created for user:', user);
         }
       }
-  
+      
       Alert.alert('Success');
     } catch (err) {
       Alert.alert('An unexpected error occurred');
     } finally {
       setLoading(false);
+      router.push('/dashboard');
     }
   }
   
@@ -214,7 +223,7 @@ export default function SignUp() {
           <Button
             title="Sign Up"
             disabled={loading}
-            onPress={() => signUpWithEmail()}
+            onPress={() => handleValidatSignUp()}
             buttonStyle={styles.button}
             titleStyle={styles.buttonText}
           />
