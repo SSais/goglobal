@@ -1,12 +1,12 @@
-import { supabase } from '../../lib/supabase'
-import { Alert, StyleSheet, View, KeyboardAvoidingView, ScrollView, Platform } from 'react-native'
-import { Text, Button } from '@rneui/themed'
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
+
+import Header from "@/components/DashBoard/Header";
 
 export default function Dashboard() {
-  return (
-    <View>
-      <Text>Dashboard</Text>
-      <Button title="Sign out" onPress={() => supabase.auth.signOut()} />
-    </View>
-  )
-}
+return (
+  <View>
+    <Text>Dashboard</Text>
+    <Header />
+  </View>
+)}

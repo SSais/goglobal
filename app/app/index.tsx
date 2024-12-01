@@ -4,11 +4,13 @@ import { supabase } from '../lib/supabase';
 import { View, Text, StyleSheet } from 'react-native';
 import { Session } from '@supabase/supabase-js';
 import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 
-import Welcome from '@/components/Auth/Welcome';
-import { Button } from '@rneui/themed';
+//components
+import Welcome from '@/components/Auth/Header';
 
 export default function App() {
+  const router = useRouter();
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
@@ -22,22 +24,22 @@ export default function App() {
   }, []);
 
   return (
-    session ? <View style={styles.container}>
-      {session && session.user && <Text>{session.user.id}</Text>}
-      <Button title="Sign out" onPress={() => supabase.auth.signOut()} />
-    </View>
-    :
-    <View style={styles.container}>
+    !session ? (
+<View style={styles.container}>
     <Welcome />
       <View style={styles.signUp}>
         <Text>
           Don't have an account?{' '}
           <Text style={styles.boldText}>
-            <Link href="/signup/signup">Sign up</Link>
+            <Link href="/signup">Sign up</Link>
           </Text>
         </Text>
       </View>
-      </View>
+      </View>  
+    ) : (
+      router.push('/dashboard')
+    )
+    
   ); 
 }
 

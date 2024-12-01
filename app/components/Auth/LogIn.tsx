@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Alert, StyleSheet, View, KeyboardAvoidingView, ScrollView, Platform } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import { Button, Input } from '@rneui/themed'
+import { useRouter } from 'expo-router';
 
 export default function Auth() {
+  const router = useRouter();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -14,11 +16,13 @@ export default function Auth() {
       email: email,
       password: password,
     })
-    console.log('success')
-    
-    if (error) Alert.alert(error.message)
-    setLoading(false)
-  }
+    if (error) {
+      Alert.alert(error.message)
+      setLoading(false)
+  } else {
+      router.push('/dashboard');
+      console.log('success')
+  }}
 
   return (
     <KeyboardAvoidingView
