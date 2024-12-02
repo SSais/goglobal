@@ -23,24 +23,29 @@ export default function App() {
     });
   }, []);
 
+  async function handleRedirect () {
+    router.push('/dashboard');
+  }
+
   return (
     !session ? (
-<View style={styles.container}>
-    <Welcome />
-      <View style={styles.signUp}>
-        <Text>
-          Don't have an account?{' '}
-          <Text style={styles.boldText}>
-            <Link href="/signup">Sign up</Link>
+      <View style={styles.container}>
+        <Welcome />
+        <View style={styles.signUp}>
+          <Text>
+            Don't have an account?{' '}
+            <Text style={styles.boldText}>
+              <Link href="/signup">
+                <Text style={styles.boldText}>Sign up</Text>
+              </Link>
+            </Text>
           </Text>
-        </Text>
+        </View>
       </View>
-      </View>  
     ) : (
-      router.push('/dashboard')
+      handleRedirect()
     )
-    
-  ); 
+  );
 }
 
 const styles = StyleSheet.create({

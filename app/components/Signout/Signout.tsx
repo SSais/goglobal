@@ -10,8 +10,6 @@ export default function SignOut() {
     }
 
     return (
-        <Button onPress={handlePress}>
-            Sign Out
-        </Button>
+        <Button onPress={handlePress} title="Sign Out" />
     )
 }

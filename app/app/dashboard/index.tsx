@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Alert, StyleSheet, View, KeyboardAvoidingView, ScrollView, Platform, Text } from 'react-native'
+import { Alert, View, Text } from 'react-native'
 import { supabase } from '../../lib/supabase'
 
 import Signout from '@/components/Signout/Signout';
