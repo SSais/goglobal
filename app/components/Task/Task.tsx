@@ -1,18 +1,17 @@
 import { View, StyleSheet } from 'react-native'
 import { Text } from '@rneui/themed'
+import { Link } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-export default function Header({prof}: {prof: any}) {
+export default function Task() {
 
   return (
   <View style={styles.container}>
-    <View>
-      <Text>Let's Go Global!</Text>
-      <Text>{prof[0].first_name} {prof[0].last_name}</Text>
-    </View>
-    {/* a link needs to be added to the profile icon*/}
-    <Ionicons name="person-circle-outline" size={50} color="black" />
+      <Text>Open Application</Text>
+        <Link href='/newappli'>
+            <Ionicons name="add-outline" size={40} color="black" />
+        </Link>
   </View>
   )
 }

@@ -4,6 +4,7 @@ import { supabase } from '../../lib/supabase'
 
 import Signout from '@/components/Signout/Signout';
 import Header from "@/components/DashBoard/Header";
+import Task from '@/components/Task/Task';
 
 export default function Dashboard() {
   
@@ -40,8 +41,8 @@ export default function Dashboard() {
 
 return (
   <View>
-    <Text>Dashboard</Text>
     <Header prof={profiles} />
+    <Task />
     <Signout />
   </View>
 )}
