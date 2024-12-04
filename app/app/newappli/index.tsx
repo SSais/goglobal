@@ -15,12 +15,6 @@ export default function Newappli() {
     dob: string;
   }
 
-  // interface questionData {
-  //   question: string;
-  //   answerType: string;
-  //   answerOptions: string[];
-  // }
-
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,7 +30,6 @@ export default function Newappli() {
     };
 
     fetchProfiles();
-    //console.log(profiles);
   }, []);
 
   if (profiles.length === 0) {
@@ -48,9 +41,6 @@ export default function Newappli() {
       <Header prof={profiles} />
       <Text>Open Application</Text>
       <Questions 
-        // question={'What passport/s do you hold?'} 
-        // answerOptions={['Australian', 'British', 'Canadian', 'American', 'Other']} 
-        // answerType={'dropdown'}
       />
     </View>
   );

@@ -1,22 +1,39 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 const questions = [
-  { question: 'Do you hold a British Passport?', label1: 'Yes', label2: 'No' },
+  { question: 'What Passport do you hold?', label1: 'British', label2: 'Other' },
   { question: 'What country do you want to move to?', label1: 'Spain' },
-  { question: 'Do you want to apply for a Digital Nomad visa?', label1: 'Yes', label2: 'No' },
+  { question: 'What visa type do you want to apply for?', label1: 'Digital Nomad', label2: 'Other' },
 ];
 
 const DropdownComponent = () => {
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+  const [error, setError] = useState<String>('');
 
   const handleChange = (value: string, index: number) => {
     setAnswers((prev) => ({ ...prev, [index]: value }));
-    console.log(`Question ${index + 1}: ${value}`);
-    console.log(answers);
+    // console.log(`Question ${index + 1}: ${value}`);
   };
+
+  const handleSubmit = () => {
+    console.log(answers);
+    if (Object.keys(answers).length !== questions.length) {
+      setError('Please answer all questions');
+      return;
+    }
+    if (answers[0] === 'Other') {
+      setError('You must hold a British Passport to apply');
+      return;
+    }
+    if (answers[2] === 'Other') {
+      setError('You can only apply for a Digital Nomad visa at this time');
+      return;
+    }
+    setError('');
+  }
 
   return (
     <View>
@@ -49,6 +66,8 @@ const DropdownComponent = () => {
           </View>
         );
       })}
+      <Text>{error}</Text>
+      <Button onPress={handleSubmit} title='Submit answers'></Button>
     </View>
   );
 };
