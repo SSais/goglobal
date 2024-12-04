@@ -1,71 +1,85 @@
 import React, { useState } from 'react';
-  import { StyleSheet } from 'react-native';
-  import { Dropdown } from 'react-native-element-dropdown';
-  import AntDesign from '@expo/vector-icons/AntDesign';
+import { StyleSheet, View, Text } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
-  const data = [
-    { label: 'Item 1', value: '1' },
-    { label: 'Item 2', value: '2' },
-    { label: 'Item 3', value: '3' },
-    { label: 'Item 4', value: '4' },
-    { label: 'Item 5', value: '5' },
-    { label: 'Item 6', value: '6' },
-    { label: 'Item 7', value: '7' },
-    { label: 'Item 8', value: '8' },
-  ];
+const questions = [
+  { question: 'Do you hold a British Passport?', label1: 'Yes', label2: 'No' },
+  { question: 'What country do you want to move to?', label1: 'Spain' },
+  { question: 'Do you want to apply for a Digital Nomad visa?', label1: 'Yes', label2: 'No' },
+];
 
-  const DropdownComponent = () => {
-    const [value, setValue] = useState(null);
+const DropdownComponent = () => {
+  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
 
-    return (
-      <Dropdown
-        style={styles.dropdown}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        data={data}
-        search
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder="Select item"
-        searchPlaceholder="Search..."
-        value={value}
-        onChange={item => {
-          setValue(item.value);
-        }}
-        renderLeftIcon={() => (
-          <AntDesign style={styles.icon} color="black" name="Safety" size={20} />
-        )}
-      />
-    );
+  const handleChange = (value: string, index: number) => {
+    setAnswers((prev) => ({ ...prev, [index]: value }));
+    console.log(`Question ${index + 1}: ${value}`);
+    console.log(answers);
   };
 
-  export default DropdownComponent;
+  return (
+    <View>
+      {questions.map((question, index) => {
+        const data = [
+          { label: question.label1 },
+          question.label2 && { label: question.label2 },
+        ].filter(Boolean);
 
-  const styles = StyleSheet.create({
-    dropdown: {
-      margin: 16,
-      height: 50,
-      borderBottomColor: 'gray',
-      borderBottomWidth: 0.5,
-    },
-    icon: {
-      marginRight: 5,
-    },
-    placeholderStyle: {
-      fontSize: 16,
-    },
-    selectedTextStyle: {
-      fontSize: 16,
-    },
-    iconStyle: {
-      width: 20,
-      height: 20,
-    },
-    inputSearchStyle: {
-      height: 40,
-      fontSize: 16,
-    },
-  });
+        return (
+          <View key={index} style={styles.questionContainer}>
+            <Text>{question.question}</Text>
+            <Dropdown
+              style={styles.dropdown}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={data}
+              maxHeight={300}
+              labelField="label"
+              valueField="label"
+              placeholder="Select item"
+              value={answers[index] || ''} // Get the answer for this question
+              onChange={(item) => handleChange(item.label, index)}
+              renderLeftIcon={() => (
+                <AntDesign style={styles.icon} color="black" name="Safety" size={20} />
+              )}
+            />
+          </View>
+        );
+      })}
+    </View>
+  );
+};
+
+export default DropdownComponent;
+
+const styles = StyleSheet.create({
+  questionContainer: {
+    marginVertical: 10,
+  },
+  dropdown: {
+    margin: 16,
+    height: 50,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.5,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
+});
