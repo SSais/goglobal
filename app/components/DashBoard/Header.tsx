@@ -23,5 +23,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     paddingLeft: 20,
-    paddingRight: 20,}  
+    paddingRight: 20,
+    backgroundColor: 'white',
+  }  
 })

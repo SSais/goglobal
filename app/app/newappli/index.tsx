@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Alert, View, Text } from 'react-native';
 import { supabase } from '../../lib/supabase';
 import { Link } from 'expo-router';
+import { StyleSheet } from 'react-native';
 
 import Header from "@/components/DashBoard/Header";
 import Questions from '@/components/Questions/Questions';
+import SignOut from '@/components/Signout/Signout';
 
 export default function Newappli() {
   interface Profile {
@@ -39,9 +41,7 @@ export default function Newappli() {
   return (
     <View>
       <Header prof={profiles} />
-      <Text>Open Application</Text>
-      <Questions 
-      />
+      <Questions />
     </View>
   );
 }
