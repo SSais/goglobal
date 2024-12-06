@@ -3,8 +3,7 @@ import { Alert, View, Text } from 'react-native'
 import { supabase } from '../../lib/supabase'
 
 import Signout from '@/components/Signout/Signout';
-import Header from "@/components/DashBoard/Header";
-import Task from '@/components/Task/Task';
+import Header from "@/components/MainHeader/Header";
 
 export default function Dashboard() {
   
@@ -42,7 +41,7 @@ export default function Dashboard() {
 return (
   <View>
     <Header prof={profiles} />
-    <Task />
+    <Text>Dashboard</Text>
     <Signout />
   </View>
 )}

@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginVertical: 16,
     textAlign: 'center',
+    color: '#2037AA',
   },
   mainContainer: {
     justifyContent: 'center',
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   },
   text : {
     fontSize: 16,
-    color: '#8466D6',
+    color: '#2037AA',
     marginBottom: 8,
     fontWeight: 'bold',
   },
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     padding: 10,
     height: 70,
-    borderColor: '#8466D6',
+    borderColor: '#2037AA',
     borderRadius: 20,
     borderWidth: 0.5,
   },

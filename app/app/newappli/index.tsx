@@ -4,9 +4,8 @@ import { supabase } from '../../lib/supabase';
 import { Link } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
-import Header from "@/components/DashBoard/Header";
+import Header from "@/components/MainHeader/Header";
 import Questions from '@/components/Questions/Questions';
-import SignOut from '@/components/Signout/Signout';
 
 export default function Newappli() {
   interface Profile {
