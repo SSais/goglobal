@@ -43,7 +43,7 @@ const DropdownComponent = () => {
     <View style={styles.mainContainer}>
       <LinearGradient
         // Background Linear Gradient
-        colors={['rgba(0,0,0,0.8)', 'transparent']}
+        colors={['#D9E4F4', '#D0F4DC']}
         style={styles.background}
       />
       <Text style={styles.title}>Your journey begins here</Text>
@@ -84,6 +84,7 @@ export default DropdownComponent;
 const styles = StyleSheet.create({
   title: {
     fontSize: 20,
+    paddingTop: 15,
     fontWeight: 'bold',
     marginVertical: 16,
     textAlign: 'center',
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    height: 200,
+    height: '100%',
   },
   questionContainer: {
     padding: 16,
@@ -115,15 +116,18 @@ const styles = StyleSheet.create({
   },
   text : {
     fontSize: 16,
+    color: '#8466D6',
     marginBottom: 8,
     fontWeight: 'bold',
   },
   dropdown: {
     marginTop: 8,
     marginBottom: 16,
-    height: 50,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 0.5,
+    padding: 10,
+    height: 70,
+    borderColor: '#8466D6',
+    borderRadius: 20,
+    borderWidth: 0.5,
   },
   icon: {
     marginRight: 5,
