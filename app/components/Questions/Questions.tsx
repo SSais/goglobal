@@ -9,7 +9,6 @@ const questions = [
   { question: 'Which type of visa are you interested in?', label1: 'Digital Nomad', label2: 'Other', placeHolder: 'Select your visa' },
 ];
 
-// Define the type for the dropdown items
 interface DropdownItem {
   label: string;
 }
@@ -42,13 +41,11 @@ const DropdownComponent = () => {
   return (
     <View style={styles.mainContainer}>
       <LinearGradient
-        // Background Linear Gradient
         colors={['#D9E4F4', '#D0F4DC']}
         style={styles.background}
       />
       <Text style={styles.title}>Your journey begins here</Text>
       {questions.map((question, index) => {
-        // Define data with explicit type
         const data: DropdownItem[] = [
           { label: question.label1 },
           question.label2 ? { label: question.label2 } : undefined,
@@ -61,7 +58,6 @@ const DropdownComponent = () => {
               style={styles.dropdown}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
-              iconStyle={styles.iconStyle}
               data={data}
               maxHeight={300}
               labelField="label"
@@ -84,7 +80,7 @@ export default DropdownComponent;
 const styles = StyleSheet.create({
   title: {
     fontSize: 20,
-    paddingTop: 15,
+    paddingTop: 7,
     fontWeight: 'bold',
     marginVertical: 16,
     textAlign: 'center',
@@ -93,7 +89,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     justifyContent: 'center',
     backgroundColor: '#f0f0f0',
-    paddingHorizontal: 16,
+    paddingHorizontal: 16,  
   },
   background:{
     position: 'absolute',
@@ -130,18 +126,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 0.5,
   },
-  icon: {
-    marginRight: 5,
-  },
   placeholderStyle: {
     fontSize: 16,
   },
   selectedTextStyle: {
     fontSize: 16,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
   },
   error: {
     color: 'red',
