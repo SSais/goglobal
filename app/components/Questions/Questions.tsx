@@ -4,9 +4,9 @@ import { Dropdown } from 'react-native-element-dropdown';
 import { LinearGradient } from 'expo-linear-gradient'; 
 
 const questions = [
-  { question: 'What is your nationality?', label1: 'British', label2: 'Other' },
-  { question: 'Where do you want to relocate to?', label1: 'Spain' },
-  { question: 'Which type of visa are you interested in?', label1: 'Digital Nomad', label2: 'Other' },
+  { question: 'What is your nationality?', label1: 'British', label2: 'Other', placeHolder: 'Select your country'},
+  { question: 'Where do you want to relocate to?', label1: 'Spain', placeHolder: 'Select your destination' },
+  { question: 'Which type of visa are you interested in?', label1: 'Digital Nomad', label2: 'Other', placeHolder: 'Select your visa' },
 ];
 
 // Define the type for the dropdown items
@@ -52,7 +52,7 @@ const DropdownComponent = () => {
         const data: DropdownItem[] = [
           { label: question.label1 },
           question.label2 ? { label: question.label2 } : undefined,
-        ].filter(Boolean) as DropdownItem[];  // Type assertion
+        ].filter(Boolean) as DropdownItem[];
 
         return (
           <View key={index} style={styles.questionContainer}>
@@ -66,8 +66,8 @@ const DropdownComponent = () => {
               maxHeight={300}
               labelField="label"
               valueField="label"
-              placeholder="Select item"
-              value={answers[index] || ''} // Get the answer for this question
+              placeholder={question.placeHolder}
+              value={answers[index] || ''}
               onChange={(item) => handleChange(item.label, index)}
             />
           </View>

@@ -237,17 +237,18 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#f9f9f9',
-  },  
+    backgroundColor: '#f3f4f6', // Soft neutral background
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#f3f4f6',
     width: '100%',
     padding: 20,
   },
   formContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 20,
   },
   inputWrapper: {
     marginBottom: 20,
@@ -258,20 +259,31 @@ const styles = StyleSheet.create({
   },
   inputField: {
     backgroundColor: 'white',
-    borderRadius: 8,
+    borderRadius: 10,
     borderColor: '#ddd',
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 2, // For Android shadow
   },
   button: {
-    backgroundColor: '#007BFF',
-    borderRadius: 8,
-    paddingVertical: 12,
+    backgroundColor: '#2563eb', // Sharper blue for the button
+    borderRadius: 10,
+    paddingVertical: 14,
     width: '100%',
+    shadowColor: '#2563eb',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 3, // For Android shadow
   },
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
+    color: 'white',
   },
-})
+});
