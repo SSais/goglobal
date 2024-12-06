@@ -9,13 +9,17 @@ const questions = [
   { question: 'What visa type do you want to apply for?', label1: 'Digital Nomad', label2: 'Other' },
 ];
 
+// Define the type for the dropdown items
+interface DropdownItem {
+  label: string;
+}
+
 const DropdownComponent = () => {
-  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
-  const [error, setError] = useState<String>('');
+  const [answers, setAnswers] = useState<Record<number, string | undefined>>({});
+  const [error, setError] = useState<string>('');
 
   const handleChange = (value: string, index: number) => {
     setAnswers((prev) => ({ ...prev, [index]: value }));
-    // console.log(`Question ${index + 1}: ${value}`);
   };
 
   const handleSubmit = () => {
@@ -33,15 +37,16 @@ const DropdownComponent = () => {
       return;
     }
     setError('');
-  }
+  };
 
   return (
     <View>
       {questions.map((question, index) => {
-        const data = [
+        // Define data with explicit type
+        const data: DropdownItem[] = [
           { label: question.label1 },
-          question.label2 && { label: question.label2 },
-        ].filter(Boolean);
+          question.label2 ? { label: question.label2 } : undefined,
+        ].filter(Boolean) as DropdownItem[];  // Type assertion
 
         return (
           <View key={index} style={styles.questionContainer}>
