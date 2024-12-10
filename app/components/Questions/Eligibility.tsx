@@ -13,7 +13,7 @@ interface DropdownItem {
   label: string;
 }
 
-const DropdownComponent = () => {
+const DropdownComponent = ({data}: {data: any}) => {
   const [answers, setAnswers] = useState<Record<number, string | undefined>>({});
   const [error, setError] = useState<string>('');
 

@@ -36,9 +36,9 @@ const DropdownComponent = ({ onSubmit }: { onSubmit: () => void }) => {
       return;
     }
 
-    setError(''); // Clear any previous errors
+    setError('');
     console.log('Success');
-    onSubmit(); // Notify the parent to hide this component
+    onSubmit();
   };
 
   return (
