@@ -19,6 +19,12 @@ export default function Newappli() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [error, setError] = useState<string | null>(null);
 
+  const [questionVisible, setQuestionVisible] = useState<boolean>(true);
+
+  const handleHideQuestions = () => {
+    setQuestionVisible(false);
+  }
+
   useEffect(() => {
     const fetchProfiles = async () => {
       const { data, error } = await supabase.from('profiles').select('*');
@@ -40,7 +46,7 @@ export default function Newappli() {
   return (
     <View>
       <Header prof={profiles} />
-      <Questions />
+      {questionVisible && <Questions onSubmit={handleHideQuestions} />}
     </View>
   );
 }

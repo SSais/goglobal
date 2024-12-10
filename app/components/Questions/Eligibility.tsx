@@ -13,7 +13,7 @@ interface DropdownItem {
   label: string;
 }
 
-const DropdownComponent = ({ onSubmit }: { onSubmit: () => void }) => {
+const DropdownComponent = () => {
   const [answers, setAnswers] = useState<Record<number, string | undefined>>({});
   const [error, setError] = useState<string>('');
 
@@ -35,10 +35,7 @@ const DropdownComponent = ({ onSubmit }: { onSubmit: () => void }) => {
       setError('Sorry, you can only apply for a Digital Nomad visa at this time');
       return;
     }
-
-    setError(''); // Clear any previous errors
-    console.log('Success');
-    onSubmit(); // Notify the parent to hide this component
+    setError('');
   };
 
   return (
@@ -47,7 +44,7 @@ const DropdownComponent = ({ onSubmit }: { onSubmit: () => void }) => {
         colors={['#D9E4F4', '#D0F4DC']}
         style={styles.background}
       />
-      <Text style={styles.title}>Your journey begins here</Text>
+      <Text style={styles.title}>Eligibility</Text>
       {questions.map((question, index) => {
         const data: DropdownItem[] = [
           { label: question.label1 },
