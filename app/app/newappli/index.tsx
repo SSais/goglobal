@@ -16,6 +16,12 @@ import Eligibility from '@/components/Questions/Eligibility';
     dob: string;
   }
 
+  interface Eligibility {
+    generalinfo: any;
+    header: string;
+    questions: string[];
+  }
+
 export default function Newappli() {
   //State to store profiles
   const [profiles, setProfiles] = useState<Profile[]>([]);
