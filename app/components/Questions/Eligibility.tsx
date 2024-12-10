@@ -11,7 +11,7 @@ export default function Eligibility({ data }: { data: any }) {
 
   return (
     <View style={styles.container}>
-      <Text>Let's Check You're Eligible</Text>
+      <Text style={styles.title}>Let's Check You're Eligible</Text>
 
       {generalInfo.map((section: any, index: number) => (
         <View key={index} style={styles.sectionContainer}>
@@ -30,7 +30,15 @@ export default function Eligibility({ data }: { data: any }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingLeft: 16,
+    paddingRight: 16
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 16,
+    textAlign: 'center',
+    color: '#2037AA',
   },
   sectionContainer: {
     marginBottom: 20,
