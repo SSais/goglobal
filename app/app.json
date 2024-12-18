@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.go.global"
+      "bundleIdentifier": "com.shab.goglobal"
     },
     "android": {
       "adaptiveIcon": {
